@@ -6,7 +6,6 @@ const initial = {
   nextOrder: {},
   prevOrder: {},
   fetchNext: false,
-  fetchPrev: false,
 
 };
 
@@ -25,7 +24,7 @@ export default function reducer(state = initial, action) {
       break;
     }
     case consts.PREV_POKEMONS: {
-      state = Object.assign({}, state, {prevOrder:action.payload.previous, fetchPrev: true, allPokemons: action.payload});
+      state = Object.assign({}, state, {prevOrder:action.payload.previous, allPokemons: action.payload});
       break;
     }
     default:

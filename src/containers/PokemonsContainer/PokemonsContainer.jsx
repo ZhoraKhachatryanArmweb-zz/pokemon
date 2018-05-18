@@ -32,15 +32,15 @@ componentWillMount() {
 }
 
 const mapStateToProps = (store) => {
-  console.log('STORE',store.pokemons.allPokemons.previous)
-  // console.log('STORE',store.pokemons.fetch)
+  // console.log('STORE',store.pokemons.allPokemons.previous)
+  console.log('STORE',store.pokemons.fetchPrev)
     return {
       pokemons: store.pokemons.allPokemons.results,
       pokemonUnit: store.pokemons.pokemonUnit,
       next: store.pokemons.allPokemons.next,
       prev: store.pokemons.allPokemons.previous,
       nextOrder: store.pokemons.nextOrder,
-      fetchNext: store.pokemons.fetchNext
+      fetchNext: store.pokemons.fetchNext,
 
     }
 };

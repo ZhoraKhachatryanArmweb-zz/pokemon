@@ -5,7 +5,9 @@ class Pokemons extends Component {
   constructor() {
     super();
     this.state = {
-        pokemonImg: ''
+        pokemonImg: '',
+        prevButton: true,
+        nextButton: false
     };
   }
 
@@ -16,10 +18,13 @@ class Pokemons extends Component {
 
   componentWillReceiveProps(nextProps) {
     this.setState({pokemonImg: nextProps.pokemonUnit.sprites && nextProps.pokemonUnit.sprites.front_default})
+    nextProps.fetchNext ? this.setState({prevButton: false}) : null
+    nextProps.prev === null ? this.setState({prevButton: true}) : null
+    nextProps.next === null ? this.setState({nextButton: true}) : null
   }
 
   nextPokemons = () => {
-    !this.props.fetchNext ? this.props.nextPokemons(this.props.next) : this.props.nextPokemons(this.props.nextOrder)
+    this.props.nextPokemons(this.props.next)
   }
 
   prevPokemons = () => {
@@ -28,7 +33,7 @@ class Pokemons extends Component {
 
 
   render() {
-    console.log('COMPONENT',this.props.prev)
+    console.log('COMPONENT',this.props)
     let pokemons = _.map(this.props.pokemons, (value, index) => {
         let pokemonName = value.name;
         return (
@@ -45,8 +50,8 @@ class Pokemons extends Component {
         <div>
             {this.props.pokemonUnit.name}
             <img src={this.state.pokemonImg}/>
-            <p onClick={this.prevPokemons}>Previous</p>
-            <p onClick={this.nextPokemons}>Next</p>
+            <button onClick={this.prevPokemons} disabled={this.state.prevButton}>Previous</button>
+            <button onClick={this.nextPokemons} disabled={this.state.nextButton}>Next</button>
         </div>
       </div>
     );
