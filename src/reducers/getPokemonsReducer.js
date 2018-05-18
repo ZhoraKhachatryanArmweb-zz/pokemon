@@ -2,17 +2,17 @@ import { consts } from '../actions/getPokemonsAction';
 
 const initial = {
   allPokemons: {},
+  pokemonColor: {},
   pokemonUnit: {},
   nextOrder: {},
   prevOrder: {},
   fetchNext: false,
-
 };
 
 export default function reducer(state = initial, action) {
   switch (action.type) {
     case consts.GET_POKEMONS: {
-      state = Object.assign({}, state, {allPokemons: action.payload} );
+      state = Object.assign({}, state, {allPokemons: action.payload.results} );
       break;
     }
     case consts.GET_POKEMON_ID: {
@@ -25,6 +25,11 @@ export default function reducer(state = initial, action) {
     }
     case consts.PREV_POKEMONS: {
       state = Object.assign({}, state, {prevOrder:action.payload.previous, allPokemons: action.payload});
+      break;
+    }
+    case consts.GET_POKEMON_COLOR: {
+      console.log('reducer', action.payload.data)
+      state = Object.assign({}, state, {pokemonColor: action.payload.data.pokemon_species});
       break;
     }
     default:

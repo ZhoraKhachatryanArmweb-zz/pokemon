@@ -7,6 +7,7 @@ class Pokemons extends Component {
     this.state = {
         pokemonImg: '',
         pokemonName: '',
+        pokemonColor: '',
         prevButton: true,
         nextButton: false
     };
@@ -20,6 +21,12 @@ class Pokemons extends Component {
   handleNameChange = (e) => {
     this.setState({pokemonName: e.target.value},() => this.props.pokemonId(this.state.pokemonName))
   }
+
+  handleColorPokemon = (e) =>{
+    let color = e.target.value
+    this.setState({pokemonColor:color})
+    this.props.pokemonColor(color)
+  } 
 
   componentWillReceiveProps(nextProps) {
     this.setState({pokemonImg: nextProps.pokemonUnit.sprites && nextProps.pokemonUnit.sprites.front_default})
@@ -54,9 +61,18 @@ class Pokemons extends Component {
         </ul>
         <div>
             {this.props.pokemonUnit.name}
+            {this.props.pokemonUnit.id}
             <img src={this.state.pokemonImg}/>
         </div>
           <input type="name" value={this.state.pokemonName} placeholder="Search pokemons" onChange={(e) => this.handleNameChange(e)}/>
+          <select value={this.state.pokemonColor} onChange={(e) => {this.handleColorPokemon(e)}}>
+            <option value="Red">Red</option>
+            <option value="Blue">Blue</option>
+            <option value="green">Green</option>
+            <option value="Yellow">Yellow</option>
+            <option value="White">White</option>
+            <option value="Black">Black</option>
+          </select>
           <button onClick={this.prevPokemons} disabled={this.state.prevButton}>Previous</button>
           <button onClick={this.nextPokemons} disabled={this.state.nextButton}>Next</button>
       </div>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import getPokemons, { pokemonId, nextPokemons, prevPokemons }  from '../../actions/getPokemonsAction';
+import getPokemons, { pokemonId, nextPokemons, prevPokemons, pokemonColor }  from '../../actions/getPokemonsAction';
 import Pokemons from '../../components/Pokemons/Pokemons'
 
 class PokemonsContainer extends Component {
@@ -26,20 +26,22 @@ componentWillMount() {
         prev={this.props.prev}
         nextOrder={this.props.nextOrder}
         fetchNext={this.props.fetchNext}
+        pokemonColor={this.props.pokemonColor}
       />
     );
   }
 }
 
 const mapStateToProps = (store) => {
-  console.log('STORE',store.pokemons.fetchPrev)
+  console.log('STORE',store.pokemons)
     return {
-      pokemons: store.pokemons.allPokemons.results,
+      pokemons: store.pokemons.allPokemons,
       pokemonUnit: store.pokemons.pokemonUnit,
       next: store.pokemons.allPokemons.next,
       prev: store.pokemons.allPokemons.previous,
       nextOrder: store.pokemons.nextOrder,
       fetchNext: store.pokemons.fetchNext,
+      pokemonColor: store.pokemons.pokemonColor
 
     }
 };
@@ -48,7 +50,8 @@ const mapDispatchToProps = (dispatch) => ({
     getPokemons: (data) => dispatch(getPokemons(data)),
     pokemonId: (data) => dispatch(pokemonId(data)),
     nextPokemons: (data) => dispatch(nextPokemons(data)),
-    prevPokemons: (data) => dispatch(prevPokemons(data))
+    prevPokemons: (data) => dispatch(prevPokemons(data)),
+    pokemonColor: (data) => dispatch(pokemonColor(data))
 });
 
 export default (connect(mapStateToProps, mapDispatchToProps) (PokemonsContainer));

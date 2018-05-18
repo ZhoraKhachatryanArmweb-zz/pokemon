@@ -4,7 +4,8 @@ export const consts = {
     GET_POKEMONS : 'GET_POKEMONS',
     GET_POKEMON_ID: 'GET_POKEMON_ID',
     NEXT_POKEMONS: 'NEXT_POKEMONS',
-    PREV_POKEMONS: 'PREV_POKEMONS'
+    PREV_POKEMONS: 'PREV_POKEMONS',
+    GET_POKEMON_COLOR: 'GET_POKEMON_COLOR'
 }
 
 const Http = {
@@ -77,6 +78,22 @@ export function pokemonId(data) {
         .then((response) => {
             dispatch({
                 type: 'GET_POKEMON_ID',
+                payload: response
+            }); 
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+    }
+}
+
+export function pokemonColor(data) {
+    return dispatch => {
+        const url = `https://pokeapi.co/api/v2/pokemon-color/${data.toLowerCase()}/`;
+        Http.get(url)
+        .then((response) => {
+            dispatch({
+                type: 'GET_POKEMON_COLOR',
                 payload: response
             }); 
         })
