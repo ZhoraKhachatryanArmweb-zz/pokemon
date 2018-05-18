@@ -8,6 +8,7 @@ class Pokemons extends Component {
         pokemonImg: '',
         pokemonName: '',
         pokemonColor: '',
+        pokemonType: {},
         prevButton: true,
         nextButton: false
     };
@@ -43,9 +44,7 @@ class Pokemons extends Component {
     this.props.prevPokemons(this.props.prev)
   }
 
-
   render() {
-    console.log('COMPONENT',this.state.pokemonName)
     let pokemons = _.map(this.props.pokemons, (value, index) => {
         let pokemonName = value.name;
         return (
@@ -54,6 +53,10 @@ class Pokemons extends Component {
             </li>
         )
       });
+    let type = []  
+    _.forEach(this.props.pokemonUnit.types, item => {
+      type.push(item.type.name)
+    })
     return (
       <div>
         <ul>
@@ -61,6 +64,7 @@ class Pokemons extends Component {
         </ul>
         <div>
             {this.props.pokemonUnit.name}
+            {type.join(', ')}
             {this.props.pokemonUnit.id}
             <img src={this.state.pokemonImg}/>
         </div>

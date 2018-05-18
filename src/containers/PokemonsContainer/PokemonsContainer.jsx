@@ -33,7 +33,6 @@ componentWillMount() {
 }
 
 const mapStateToProps = (store) => {
-  console.log('STORE',store.pokemons)
     return {
       pokemons: store.pokemons.allPokemons,
       pokemonUnit: store.pokemons.pokemonUnit,

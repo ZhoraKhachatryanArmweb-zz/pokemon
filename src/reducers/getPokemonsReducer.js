@@ -28,7 +28,6 @@ export default function reducer(state = initial, action) {
       break;
     }
     case consts.GET_POKEMON_COLOR: {
-      console.log('reducer', action.payload.data)
       state = Object.assign({}, state, {pokemonColor: action.payload.data.pokemon_species});
       break;
     }
