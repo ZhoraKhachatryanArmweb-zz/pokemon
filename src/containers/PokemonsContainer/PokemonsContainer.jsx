@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import getPokemons, { pokemonId, nextPokemons, prevPokemons, pokemonColor }  from '../../actions/getPokemonsAction';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import getPokemons, { pokemonId, nextPokemons, prevPokemons, pokemonColor }  from '../../actions/getPokemonsAction'
 import Pokemons from '../../components/Pokemons/Pokemons'
 
 class PokemonsContainer extends Component {
   constructor() {
-    super();
+    super()
     this.state = {
-    };
+    }
   }
 
 componentWillMount() {
@@ -28,7 +28,7 @@ componentWillMount() {
         fetchNext={this.props.fetchNext}
         pokemonColor={this.props.pokemonColor}
       />
-    );
+    )
   }
 }
 
@@ -43,7 +43,7 @@ const mapStateToProps = (store) => {
       pokemonColor: store.pokemons.pokemonColor
 
     }
-};
+}
   
 const mapDispatchToProps = (dispatch) => ({
     getPokemons: (data) => dispatch(getPokemons(data)),
@@ -51,6 +51,6 @@ const mapDispatchToProps = (dispatch) => ({
     nextPokemons: (data) => dispatch(nextPokemons(data)),
     prevPokemons: (data) => dispatch(prevPokemons(data)),
     pokemonColor: (data) => dispatch(pokemonColor(data))
-});
+})
 
-export default (connect(mapStateToProps, mapDispatchToProps) (PokemonsContainer));
+export default (connect(mapStateToProps, mapDispatchToProps) (PokemonsContainer))

@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import * as _ from 'lodash';
+import React, { Component } from 'react'
+import * as _ from 'lodash'
 
 class Pokemons extends Component {
   constructor() {
-    super();
+    super()
     this.state = {
         pokemonImg: '',
         pokemonName: '',
@@ -11,16 +11,16 @@ class Pokemons extends Component {
         pokemonType: {},
         prevButton: true,
         nextButton: false
-    };
+    }
   }
 
   handleCheck = (e) => {
-    let body = e.target.getAttribute('name');
+    let body = e.target.getAttribute('name')
     this.props.pokemonId(body)
   }
 
   handleNameChange = (e) => {
-    this.setState({pokemonName: e.target.value},() => this.props.pokemonId(this.state.pokemonName))
+    this.setState({pokemonName: e.target.value}, () => this.props.pokemonId(this.state.pokemonName))
   }
 
   handleColorPokemon = (e) =>{
@@ -46,13 +46,13 @@ class Pokemons extends Component {
 
   render() {
     let pokemons = _.map(this.props.pokemons, (value, index) => {
-        let pokemonName = value.name;
+        let pokemonName = value.name
         return (
             <li key={index} onClick={this.handleCheck} name={pokemonName}>
                 {pokemonName}
             </li>
         )
-      });
+      })
     let type = []  
     _.forEach(this.props.pokemonUnit.types, item => {
       type.push(item.type.name)
@@ -80,8 +80,8 @@ class Pokemons extends Component {
           <button onClick={this.prevPokemons} disabled={this.state.prevButton}>Previous</button>
           <button onClick={this.nextPokemons} disabled={this.state.nextButton}>Next</button>
       </div>
-    );
+    )
   }
 }
 
-export default Pokemons;
+export default Pokemons
