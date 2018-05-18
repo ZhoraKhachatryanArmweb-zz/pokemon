@@ -6,6 +6,7 @@ class Pokemons extends Component {
     super();
     this.state = {
         pokemonImg: '',
+        pokemonName: '',
         prevButton: true,
         nextButton: false
     };
@@ -14,6 +15,10 @@ class Pokemons extends Component {
   handleCheck = (e) => {
     let body = e.target.getAttribute('name');
     this.props.pokemonId(body)
+  }
+
+  handleNameChange = (e) => {
+    this.setState({pokemonName: e.target.value},() => this.props.pokemonId(this.state.pokemonName))
   }
 
   componentWillReceiveProps(nextProps) {
@@ -33,7 +38,7 @@ class Pokemons extends Component {
 
 
   render() {
-    console.log('COMPONENT',this.props)
+    console.log('COMPONENT',this.state.pokemonName)
     let pokemons = _.map(this.props.pokemons, (value, index) => {
         let pokemonName = value.name;
         return (
@@ -50,9 +55,10 @@ class Pokemons extends Component {
         <div>
             {this.props.pokemonUnit.name}
             <img src={this.state.pokemonImg}/>
-            <button onClick={this.prevPokemons} disabled={this.state.prevButton}>Previous</button>
-            <button onClick={this.nextPokemons} disabled={this.state.nextButton}>Next</button>
         </div>
+          <input type="name" value={this.state.pokemonName} placeholder="Search pokemons" onChange={(e) => this.handleNameChange(e)}/>
+          <button onClick={this.prevPokemons} disabled={this.state.prevButton}>Previous</button>
+          <button onClick={this.nextPokemons} disabled={this.state.nextButton}>Next</button>
       </div>
     );
   }

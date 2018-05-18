@@ -32,7 +32,6 @@ componentWillMount() {
 }
 
 const mapStateToProps = (store) => {
-  // console.log('STORE',store.pokemons.allPokemons.previous)
   console.log('STORE',store.pokemons.fetchPrev)
     return {
       pokemons: store.pokemons.allPokemons.results,

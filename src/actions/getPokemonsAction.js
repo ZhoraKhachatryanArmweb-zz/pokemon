@@ -24,7 +24,7 @@ const Http = {
 
 export default function getPokemons(data) {
     return dispatch => {
-        const url = 'HTTPS://pokeapi.co/api/v2/pokemon/';
+        const url = 'https://pokeapi.co/api/v2/pokemon/';
         Http.get(url)
         .then((response) => {
             dispatch({
@@ -72,7 +72,7 @@ export function prevPokemons(data) {
 
 export function pokemonId(data) {
     return dispatch => {
-        const url = `HTTPS://pokeapi.co/api/v2/pokemon/${data}`;
+        const url = `https://pokeapi.co/api/v2/pokemon/${data.toLowerCase()}`;
         Http.get(url)
         .then((response) => {
             dispatch({
