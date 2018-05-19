@@ -94,7 +94,6 @@ class Pokemons extends Component {
                 <p className="card-text"><b>Height:</b> {this.props.pokemonUnit.height}</p>
               </div>
             </div>
-
             <div className="pokemons-color-box pt-2">
               <select className="form-control" value={this.state.pokemonColor} onChange={(e) => {this.handleColorPokemon(e)}}>
                 <option>Select color</option>
@@ -102,6 +101,9 @@ class Pokemons extends Component {
                 <option value="Blue">Blue</option>
                 <option value="green">Green</option>
                 <option value="Yellow">Yellow</option>
+                <option value="Purple">Purple</option>
+                <option value="Gray">Gray</option>
+                <option value="Brown">Brown</option>
                 <option value="White">White</option>
                 <option value="Black">Black</option>
               </select>
@@ -111,7 +113,6 @@ class Pokemons extends Component {
                 </ul>
               </div>}
             </div>
-
           </div>
         </div>
       </div>
