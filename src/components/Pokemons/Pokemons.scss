@@ -1,0 +1,53 @@
+.list-pokemons {
+    background: #2d70b7;
+    background-image: url('../../assets/images/background.png');
+    border-radius: 10px;
+}
+.pokemon-list-header {
+    h4 {
+        color:#fff;
+    }
+    input {
+        width: 100%
+    }
+} 
+.details-pokemons {
+    background: #ffcb05;
+    background-image: url('../../assets/images/background.png');
+    border-radius: 10px;
+}
+.prev-next-buttons {
+    .prev {
+        float: left;
+    }
+    .next {
+        float: right;
+    }
+} 
+button:disabled {
+    &:disabled {
+        background-color: #ccc !important;
+        border-color: #ccc !important;
+        color:#000 !important;
+        opacity: 1 !important;
+    }  
+}
+.card {
+    display:block !important;
+    text-align: center;
+    img {
+        width: 200px;
+    }
+}
+.card-img-top {
+    height: 200px;
+}
+.pokemons-color-list {
+    height: 505px;
+    overflow-y: scroll;
+}
+.list-group-item {
+    &:hover {
+        cursor: pointer;
+    }
+}

@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import Header from './components/Header/Headers'
 import Footer from './components/Footer/Footer'
 import PokemonsContainer from './containers/PokemonsContainer/PokemonsContainer'
-import './assets/styles/style.css'
+import './assets/styles/styles.css'
 
 class App extends Component {
   render() {

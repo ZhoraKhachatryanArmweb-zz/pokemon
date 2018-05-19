@@ -1,45 +1,43 @@
 .list-pokemons {
-    background: #2d70b7;
-    background-image: url('../../assets/images/background.png');
-    border-radius: 10px;
-}
+  background: #2d70b7;
+  background-image: url("../../assets/images/background.png");
+  border-radius: 10px; }
+
 .pokemon-list-header h4 {
-    color:#fff;
-}
+  color: #fff; }
+
 .pokemon-list-header input {
-    width: 100%
-}
+  width: 100%; }
+
 .details-pokemons {
-    background: #ffcb05;
-    background-image: url('../../assets/images/background.png');
-    border-radius: 10px;
-}
+  background: #ffcb05;
+  background-image: url("../../assets/images/background.png");
+  border-radius: 10px; }
+
 .prev-next-buttons .prev {
-    float: left;
-}
-button:disabled {
-    background-color: #ccc !important;
-    border-color: #ccc !important;
-    color:#000 !important;
-    opacity: 1 !important;
-}
+  float: left; }
+
 .prev-next-buttons .next {
-    float: right;
-}
+  float: right; }
+
+button:disabled:disabled {
+  background-color: #ccc !important;
+  border-color: #ccc !important;
+  color: #000 !important;
+  opacity: 1 !important; }
+
 .card {
-    display:block !important;
-    text-align: center;
-}
-.card img {
-    width: 200px;
-}
+  display: block !important;
+  text-align: center; }
+  .card img {
+    width: 200px; }
+
 .card-img-top {
-    height: 200px;
-}
+  height: 200px; }
+
 .pokemons-color-list {
-    height: 505px;
-    overflow-y: scroll;
-}
+  height: 505px;
+  overflow-y: scroll; }
+
 .list-group-item:hover {
-    cursor: pointer;
-}
+  cursor: pointer; }
