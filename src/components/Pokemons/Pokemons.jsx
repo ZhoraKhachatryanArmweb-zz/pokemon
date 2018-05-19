@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import * as _ from 'lodash'
+import './Pokemons.css'
 
 class Pokemons extends Component {
   constructor() {
@@ -25,7 +26,7 @@ class Pokemons extends Component {
 
   handleColorPokemon = (e) =>{
     let color = e.target.value
-    this.setState({pokemonColor:color})
+    this.setState({pokemonColor: color})
     this.props.pokemonColor(color)
   } 
 
@@ -48,37 +49,71 @@ class Pokemons extends Component {
     let pokemons = _.map(this.props.pokemons, (value, index) => {
         let pokemonName = value.name
         return (
-            <li key={index} onClick={this.handleCheck} name={pokemonName}>
+            <li key={index} onClick={this.handleCheck} name={pokemonName} className="list-group-item list-group-item-action">
                 {pokemonName}
             </li>
         )
       })
+    let pokemonsColorList = _.map(this.props.pokemonColorData, (value, index) => {
+      let pokemonName = value.name
+      return (
+          <li key={index} onClick={this.handleCheck} name={pokemonName} className="list-group-item list-group-item-action">
+              {pokemonName}
+          </li>
+      )
+    })
     let type = []  
     _.forEach(this.props.pokemonUnit.types, item => {
       type.push(item.type.name)
     })
     return (
-      <div>
-        <ul>
-            {pokemons}
-        </ul>
-        <div>
-            {this.props.pokemonUnit.name}
-            {type.join(', ')}
-            {this.props.pokemonUnit.id}
-            <img src={this.state.pokemonImg}/>
+      <div className="container">
+        <div className="row">
+          <div className="col m-2 p-3 list-pokemons">
+            <div className="row pokemon-list-header">
+              <div className="col-md-6 col-sm-12 pb-1"><h4>Pokemons</h4></div>
+              <div className="col-md-6 col-sm-12 pb-1"><input type="name" className="form-control" value={this.state.pokemonName} placeholder="Search pokemons" onChange={(e) => this.handleNameChange(e)}/></div>
+            </div>
+            <ul className="list-group">
+              {pokemons}
+            </ul>
+            <div className="pt-2 prev-next-buttons">
+              <button onClick={this.prevPokemons} className="prev btn btn-dark" disabled={this.state.prevButton}>Previous</button>
+              <button onClick={this.nextPokemons} className="next btn btn-dark" disabled={this.state.nextButton}>Next</button>
+            </div>
+          </div>
+          <div className="col m-2 p-3 details-pokemons">
+            <div className="card">
+              <img className="card-img-top" src={this.state.pokemonImg ? this.state.pokemonImg : require('../../assets/images/default.png')}/>
+              <div className="card-body">
+                <p className="card-text">Name: {this.props.pokemonUnit.name}</p>
+                <p className="card-text">ID: {this.props.pokemonUnit.id}</p>
+                <p className="card-text">Type: {type.join(', ')}</p>
+                <p className="card-text">Base experience: {this.props.pokemonUnit.base_experience}</p>
+                <p className="card-text">Weight: {this.props.pokemonUnit.weight}</p>
+                <p className="card-text">Height: {this.props.pokemonUnit.height}</p>
+              </div>
+            </div>
+
+            <div className="pokemons-color-box pt-2">
+              <select className="form-control" value={this.state.pokemonColor} onChange={(e) => {this.handleColorPokemon(e)}}>
+                <option>Select color</option>
+                <option value="Red">Red</option>
+                <option value="Blue">Blue</option>
+                <option value="green">Green</option>
+                <option value="Yellow">Yellow</option>
+                <option value="White">White</option>
+                <option value="Black">Black</option>
+              </select>
+              {this.props.showPokemonColor && <div className="pokemons-color-list mt-2">
+                <ul className="list-group">
+                  {pokemonsColorList}
+                </ul>
+              </div>}
+            </div>
+
+          </div>
         </div>
-          <input type="name" value={this.state.pokemonName} placeholder="Search pokemons" onChange={(e) => this.handleNameChange(e)}/>
-          <select value={this.state.pokemonColor} onChange={(e) => {this.handleColorPokemon(e)}}>
-            <option value="Red">Red</option>
-            <option value="Blue">Blue</option>
-            <option value="green">Green</option>
-            <option value="Yellow">Yellow</option>
-            <option value="White">White</option>
-            <option value="Black">Black</option>
-          </select>
-          <button onClick={this.prevPokemons} disabled={this.state.prevButton}>Previous</button>
-          <button onClick={this.nextPokemons} disabled={this.state.nextButton}>Next</button>
       </div>
     )
   }

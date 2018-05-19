@@ -27,6 +27,9 @@ componentWillMount() {
         nextOrder={this.props.nextOrder}
         fetchNext={this.props.fetchNext}
         pokemonColor={this.props.pokemonColor}
+        pokemonColorData={this.props.pokemonColorData}
+        showPokemon={this.props.showPokemon}
+        showPokemonColor={this.props.showPokemonColor}
       />
     )
   }
@@ -34,14 +37,15 @@ componentWillMount() {
 
 const mapStateToProps = (store) => {
     return {
-      pokemons: store.pokemons.allPokemons,
+      pokemons: store.pokemons.allPokemons.results,
       pokemonUnit: store.pokemons.pokemonUnit,
       next: store.pokemons.allPokemons.next,
       prev: store.pokemons.allPokemons.previous,
       nextOrder: store.pokemons.nextOrder,
       fetchNext: store.pokemons.fetchNext,
-      pokemonColor: store.pokemons.pokemonColor
-
+      pokemonColorData: store.pokemons.pokemonColorData,
+      showPokemon: store.pokemons.showPokemon,
+      showPokemonColor: store.pokemons.showPokemonColor
     }
 }
   

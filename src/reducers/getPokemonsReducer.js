@@ -2,21 +2,23 @@ import { consts } from '../actions/getPokemonsAction'
 
 const initial = {
   allPokemons: {},
-  pokemonColor: {},
+  pokemonColorData: {},
   pokemonUnit: {},
   nextOrder: {},
   prevOrder: {},
   fetchNext: false,
+  showPokemon: false,
+  showPokemonColor: false
 }
 
 export default function reducer(state = initial, action) {
   switch (action.type) {
     case consts.GET_POKEMONS: {
-      state = Object.assign({}, state, {allPokemons: action.payload.results})
+      state = Object.assign({}, state, {allPokemons: action.payload})
       break
     }
     case consts.GET_POKEMON_ID: {
-      state = Object.assign({}, state, {pokemonUnit: action.payload.data})
+      state = Object.assign({}, state, {pokemonUnit: action.payload.data, showPokemon: true})
       break
     }
     case consts.NEXT_POKEMONS: {
@@ -28,7 +30,7 @@ export default function reducer(state = initial, action) {
       break
     }
     case consts.GET_POKEMON_COLOR: {
-      state = Object.assign({}, state, {pokemonColor: action.payload.data.pokemon_species})
+      state = Object.assign({}, state, {pokemonColorData: action.payload.data.pokemon_species, showPokemonColor: true})
       break
     }
     default:

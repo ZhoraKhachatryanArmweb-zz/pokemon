@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
-import './App.css';
+import Header from './components/Header/Headers'
+import Footer from './components/Footer/Footer'
 import PokemonsContainer from './containers/PokemonsContainer/PokemonsContainer'
+import './assets/styles/style.css'
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div className="app">
+        <Header />
         <PokemonsContainer />
+        <Footer />
       </div>
     );
   }

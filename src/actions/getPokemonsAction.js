@@ -14,7 +14,7 @@ const Http = {
             let headers = {
                 'Content-Type': 'application/json',
             }
-            axios.get(url,{
+            axios.get(url, {
                 headers: headers
             })
             .then((response) => resolve(response))
@@ -41,7 +41,7 @@ export default function getPokemons(data) {
 
 export function nextPokemons(data) {
     return dispatch => {
-        const url =  `${data}`
+        const url = `${data}`
         Http.get(url)
         .then((response) => {
             dispatch({
@@ -57,7 +57,7 @@ export function nextPokemons(data) {
 
 export function prevPokemons(data) {
     return dispatch => {
-        const url =  `${data}`
+        const url =  `${data}`;
         Http.get(url)
         .then((response) => {
             dispatch({
