@@ -86,12 +86,12 @@ class Pokemons extends Component {
             <div className="card">
               <img className="card-img-top" src={this.state.pokemonImg ? this.state.pokemonImg : require('../../assets/images/default.png')}/>
               <div className="card-body">
-                <p className="card-text">Name: {this.props.pokemonUnit.name}</p>
-                <p className="card-text">ID: {this.props.pokemonUnit.id}</p>
-                <p className="card-text">Type: {type.join(', ')}</p>
-                <p className="card-text">Base experience: {this.props.pokemonUnit.base_experience}</p>
-                <p className="card-text">Weight: {this.props.pokemonUnit.weight}</p>
-                <p className="card-text">Height: {this.props.pokemonUnit.height}</p>
+                <p className="card-text"><b>Name:</b> {this.props.pokemonUnit.name}</p>
+                <p className="card-text"><b>ID:</b> {this.props.pokemonUnit.id}</p>
+                <p className="card-text"><b>Type:</b> {type.join(', ')}</p>
+                <p className="card-text"><b>Base experience:</b> {this.props.pokemonUnit.base_experience}</p>
+                <p className="card-text"><b>Weight:</b> {this.props.pokemonUnit.weight}</p>
+                <p className="card-text"><b>Height:</b> {this.props.pokemonUnit.height}</p>
               </div>
             </div>
 
