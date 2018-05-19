@@ -1,5 +1,5 @@
 .list-pokemons {
-    background: brown;
+    background: #2d70b7;
     background-image: url('../../assets/images/background.png');
     border-radius: 10px;
 }
@@ -10,7 +10,7 @@
     width: 100%
 }
 .details-pokemons {
-    background: aquamarine;
+    background: #ffcb05;
     background-image: url('../../assets/images/background.png');
     border-radius: 10px;
 }
@@ -39,4 +39,7 @@ button:disabled {
 .pokemons-color-list {
     height: 505px;
     overflow-y: scroll;
+}
+.list-group-item:hover {
+    cursor: pointer;
 }
