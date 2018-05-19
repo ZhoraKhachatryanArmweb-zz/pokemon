@@ -20,7 +20,7 @@
 .prev-next-buttons .next {
   float: right; }
 
-button:disabled:disabled {
+button:disabled {
   background-color: #ccc !important;
   border-color: #ccc !important;
   color: #000 !important;

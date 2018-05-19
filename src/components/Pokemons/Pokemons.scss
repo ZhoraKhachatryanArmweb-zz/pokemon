@@ -24,7 +24,7 @@
         float: right;
     }
 } 
-button:disabled {
+button {
     &:disabled {
         background-color: #ccc !important;
         border-color: #ccc !important;
