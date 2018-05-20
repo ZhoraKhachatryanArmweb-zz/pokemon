@@ -32,9 +32,9 @@ class Pokemons extends Component {
 
   componentWillReceiveProps(nextProps) {
     this.setState({pokemonImg: nextProps.pokemonUnit.sprites && nextProps.pokemonUnit.sprites.front_default})
-    nextProps.fetchNext ? this.setState({prevButton: false}) : null
-    nextProps.prev === null ? this.setState({prevButton: true}) : null
-    nextProps.next === null ? this.setState({nextButton: true}) : null
+    nextProps.fetchNext && this.setState({prevButton: false}) 
+    nextProps.prev === null && this.setState({prevButton: true}) 
+    nextProps.next === null && this.setState({nextButton: true}) 
   }
 
   nextPokemons = () => {
@@ -84,7 +84,7 @@ class Pokemons extends Component {
           </div>
           <div className="col m-2 p-3 details-pokemons">
             <div className="card">
-              <img className="card-img-top" src={this.state.pokemonImg ? this.state.pokemonImg : require('../../assets/images/default.png')}/>
+              <img className="card-img-top" src={this.state.pokemonImg ? this.state.pokemonImg : require('../../assets/images/default.png')} alt="avatar"/>
               <div className="card-body">
                 <p className="card-text"><b>Name:</b> {this.props.pokemonUnit.name}</p>
                 <p className="card-text"><b>ID:</b> {this.props.pokemonUnit.id}</p>

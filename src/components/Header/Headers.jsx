@@ -12,7 +12,7 @@ class Header extends Component {
     return (
       <div className="header">
         <div className="logo">
-            <img src={require('../../assets/images/pokemon.png')} />
+            <img src={require('../../assets/images/pokemon.png')} alt="logo"/>
         </div>
       </div>
     )
