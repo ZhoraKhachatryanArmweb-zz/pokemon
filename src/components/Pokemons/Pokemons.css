@@ -41,3 +41,6 @@ button:disabled {
 
 .list-group-item:hover {
   cursor: pointer; }
+
+.app-content {
+  flex: 1; }

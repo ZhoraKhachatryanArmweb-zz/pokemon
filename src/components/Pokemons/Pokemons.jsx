@@ -67,7 +67,7 @@ class Pokemons extends Component {
       type.push(item.type.name)
     })
     return (
-      <div className="container">
+      <div className="container app-content">
         <div className="row">
           <div className="col m-2 p-3 list-pokemons">
             <div className="row pokemon-list-header">
