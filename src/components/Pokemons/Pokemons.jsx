@@ -11,7 +11,8 @@ class Pokemons extends Component {
         pokemonColor: '',
         pokemonType: {},
         prevButton: true,
-        nextButton: false
+        nextButton: false,
+        nextCount: 1
     }
   }
 
@@ -45,6 +46,10 @@ class Pokemons extends Component {
     this.props.prevPokemons(this.props.prev)
   }
 
+  nextTable = (nextCount) => {
+    this.props.getPokemonsTable(nextCount + 1)
+  }
+
   render() {
     let pokemons = _.map(this.props.pokemons, (value, index) => {
         let pokemonName = value.name
@@ -60,6 +65,16 @@ class Pokemons extends Component {
           <li key={index} onClick={this.handleCheck} name={pokemonName} className="list-group-item list-group-item-action">
               {pokemonName}
           </li>
+      )
+    })
+    let pokemonsTable = _.map(this.props.pokemonstTable, (value, index) => {
+      return (
+        <tr key={index}>
+          <td><img  src={value.avatar} alt="avatar"/></td>
+          <td>{value.name}</td>
+          <td>{value.height}</td>
+          <td>{value.weight}</td>
+        </tr>
       )
     })
     let type = []  
@@ -113,6 +128,24 @@ class Pokemons extends Component {
                 </ul>
               </div>}
             </div>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col">
+          {this.props.pokemonstTable.length > 0 ? <table className="table table-striped">
+              <thead>
+                <tr>
+                  <th>Avatar</th>
+                  <th>Name</th>
+                  <th>Height</th>
+                  <th>Weight</th>
+                </tr>
+              </thead>
+              <tbody>
+                {pokemonsTable}
+              </tbody>
+            </table> : <img src={require('../../assets/images/loader.gif')} alt="loader" className="loader"/>}
+            <p onClick={this.nextTable(this.state.nextCount)}>next</p>
           </div>
         </div>
       </div>

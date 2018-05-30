@@ -5,7 +5,8 @@ export const consts = {
     GET_POKEMON_ID: 'GET_POKEMON_ID',
     NEXT_POKEMONS: 'NEXT_POKEMONS',
     PREV_POKEMONS: 'PREV_POKEMONS',
-    GET_POKEMON_COLOR: 'GET_POKEMON_COLOR'
+    GET_POKEMON_COLOR: 'GET_POKEMON_COLOR',
+    GET_POKEMONS_TABLE: 'GET_POKEMONS_TABLE'
 }
 
 const Http = {
@@ -101,4 +102,28 @@ export function pokemonColor(data) {
             console.log(err)
         })
     }
+}
+
+export function getPokemonsTable(nextCount) {
+    return function(dispatch) { 
+        const url = 'https://pokeapi.co/api/v2/pokemon'       
+        axios.get(url, { params: {offset: 10, limit: 10 } })        
+        .then(response => {
+            let { results } = response.data;            
+            return Promise.all(results.map(pokemon => {
+                return axios.get(pokemon.url)
+                    .then(response => {
+                        let { name, height, weight, sprites } = response.data
+                        let pokemon = { avatar: sprites.front_default, name, height, weight }
+                        return pokemon
+                    });
+            }))
+            .then(response => {
+                dispatch({
+                    type: 'GET_POKEMONS_TABLE',
+                    payload: response
+                })
+            })
+        })
+    }    
 }

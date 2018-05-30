@@ -8,7 +8,8 @@ const initial = {
   prevOrder: {},
   fetchNext: false,
   showPokemon: false,
-  showPokemonColor: false
+  showPokemonColor: false,
+  pokemonstTable: {}
 }
 
 export default function reducer(state = initial, action) {
@@ -31,6 +32,10 @@ export default function reducer(state = initial, action) {
     }
     case consts.GET_POKEMON_COLOR: {
       state = Object.assign({}, state, {pokemonColorData: action.payload.data.pokemon_species, showPokemonColor: true})
+      break
+    }
+    case consts.GET_POKEMONS_TABLE: {
+      state = Object.assign({}, state, {pokemonstTable: action.payload})
       break
     }
     default:

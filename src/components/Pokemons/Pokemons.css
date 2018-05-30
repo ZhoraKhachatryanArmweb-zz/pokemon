@@ -44,3 +44,11 @@ button:disabled {
 
 .app-content {
   flex: 1; }
+
+.loader {
+  text-align: center;
+  width: 80px;
+  display: block;
+  margin: 0 auto; }
+.table {
+  border: 1px solid #dee2e6; }
