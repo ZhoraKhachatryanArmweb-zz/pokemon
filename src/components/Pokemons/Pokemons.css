@@ -52,3 +52,25 @@ button:disabled {
   margin: 0 auto; }
 .table {
   border: 1px solid #dee2e6; }
+ul.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+ul.pagination li a {
+    color: #000;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+ul.pagination li a:hover {
+  color: #fdcb30;
+  background-color: #3564ae;
+}
+ul.pagination li.active a{
+  color: #fdcb30 !important;
+  background-color: #3564ae;
+}
+.disabled {
+  display:none
+}
