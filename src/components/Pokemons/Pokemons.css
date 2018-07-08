@@ -74,3 +74,9 @@ ul.pagination li.active a{
 .disabled {
   display:none
 }
+.sorting-link:hover {
+  cursor: pointer;
+}
+.sorting-link i {
+  font-size: 28px
+}

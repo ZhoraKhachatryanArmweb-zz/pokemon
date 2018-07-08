@@ -8,7 +8,9 @@ import * as pokemonActions from '../../actions/getPokemonsAction'
 class Pokemons extends Component {
   state = {
     tableDatLength: null,
-    pokemonType: ''
+    pokemonType: '',
+    searchTerm: '',
+    sort: ''
   }
 
   handleColorPokemon = (e) => {
@@ -27,13 +29,28 @@ class Pokemons extends Component {
     this.props.getPokemonsTable(pageNumber, this.state.pokemonType, fromType)
   }
 
+  handleSearch = (value) => {
+    this.setState({ searchTerm: value })
+  }
+
+  handleSorting = () => {
+    this.setState({sort: this.state.sort === 'asc' ? 'desc' : 'asc'})
+  }
+
   render() {
+    let searchPokemon  = this.props.pokemonstTable;
+    searchPokemon = _.filter(searchPokemon, (item)=>{
+      return _.includes(item.name, this.state.searchTerm.toLocaleLowerCase())
+    });
+    if(this.state.sort !== '') {
+      searchPokemon = _.orderBy(searchPokemon, 'name', this.state.sort);
+    }
     let pokemonTypes = _.map(this.props.pokemonTypes, (value, index) => {
       return (
         <option key={index} value={value.url}>{value.name}</option>
       )
     })
-    let pokemonsTable = _.map(this.props.pokemonstTable, (value, index) => {
+    let pokemonsTable = _.map(searchPokemon, (value, index) => {
       return (
         <tr key={index}>
           <td><img  src={value.avatar} alt="avatar"/></td>
@@ -50,6 +67,18 @@ class Pokemons extends Component {
             <select className="form-control" value={this.state.pokemonType} onChange={(e) => { this.handleColorPokemon(e) }}>
               {pokemonTypes}
             </select>
+          </div>
+          <div className="col-4 pt-2">
+            <input
+            className="form-control"
+            type="text" placeholder="Search your Pokemon"
+            value={this.state.searchTerm}
+            onChange={(e) => this.handleSearch(e.target.value)}/>
+          </div>
+          <div className="col-4 pt-2">
+            <a className="sorting-link" onClick={this.handleSorting}>
+              <i className={`fa ${this.state.sort === 'asc' ? 'fa-sort-alpha-desc' : 'fa-sort-alpha-asc'}`}></i>
+            </a>
           </div>
         </div>
         <div className="row">

@@ -66,3 +66,11 @@ button {
 .disabled {
     display:none
 }
+.sorting-link {
+    &:hover {
+        cursor: pointer;
+    }
+    i {
+        font-size: 28px
+    }
+}
