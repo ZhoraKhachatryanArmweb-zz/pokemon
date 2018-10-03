@@ -5,7 +5,7 @@ export const consts = {
     POKEMONS_LOADER: 'POKEMONS_LOADER',
     FETCH_POKEMONS_TYPES: 'FETCH_POKEMONS_TYPES'
 }
-const URL = 'http://pokeapi.salestock.net/api/v2'
+const URL = 'http://pokeapi.salestock.net/api/v2';
 
 export function fetchTypes() {
     return function(dispatch) {        
